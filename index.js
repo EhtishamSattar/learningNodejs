@@ -10,7 +10,7 @@ app.get('/',(req,res)=>{
 app.post('/formsubmit',(req,res)=>{
   
     res.send(`
-    <h1>Form  Successfully Submitted  </h1>
+    <h2>Form  Successfully Submitted  </h2>
 
     `)
 });
