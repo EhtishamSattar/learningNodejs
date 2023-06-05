@@ -10,12 +10,19 @@
     </head>
     <body>
       
-        <h1>Home</h1>
-        <form action="/formsubmit" method="POST">
+        <h1><%= user.name %>  please fill the form </h1>
+
+        <!-- Passing age parameter to the middleware before posting reqauest to '/formsubmit' -->
+        <form action='/formsubmit?age=18' method="POST">
             <label for="name">Name:</label>
-            <input type="ratio" id="name" name="name">
-            <input type="submit">
+            <input type="ratio" id="name" name="name" placeholder="Name" required>
+            <label for="name">Name:</label>
+            <input type="ratio" id="age" name="age" placeholder="Age" required>
+            <input type="submit" > 
         </form>
-        <script src="" async defer></script>
+        <script>
+            const age=document.getElementById('age').value;
+            console.log(age)
+        </script>
     </body>
 </html>
