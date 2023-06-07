@@ -7,7 +7,20 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 route.use(checkAge);
+
 app.set('view engine','ejs')
+
+
+// const checkAge=(req,res,next)=>{
+//     if(req.query.age<18){
+//         res.render("underAge");
+//     }else{
+//         next();
+//     }
+// }
+
+// ----- Application level middle ware --- Applied to whole application
+// app.use(checkAge);
 
 app.get('/',(req,res)=>{
     user={
@@ -18,7 +31,10 @@ app.get('/',(req,res)=>{
     res.render('home',{user});
 });
 
-// using route to apply the Specific middle ware
+// aesy bhi kr sakty use middleware --- Single level route
+// app.post(`/formsubmit`, checkAge ,(req,res)=>{
+
+// using route to apply the Specific middle ware --- Group level middleware
 route.post(`/formsubmit`,(req,res)=>{
     
     res.send(`
