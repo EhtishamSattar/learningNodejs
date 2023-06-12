@@ -53,5 +53,16 @@ app.delete(`/:id`,async (req,res)=>{
 })
 
 
-
+// http://localhost:5000/search/3 --- hit like this 
+app.get('/search/:key',async (req,res)=>{
+    const collection=await connectdb();
+    console.warn(req.params.key);
+    const result= await collection.find({
+        '$or':[
+            {"name":{$regex:req.params.key}},
+            {"password":{$regex:req.params.key}}
+        ]
+    }).toArray()
+    res.send(result)
+})
 app.listen(5000);
